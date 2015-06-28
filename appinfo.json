@@ -1,0 +1,19 @@
+{
+    "appKeys": {},
+    "capabilities": [
+        ""
+    ],
+    "companyName": "mail@hopps.me",
+    "longName": "Fortuna",
+    "projectType": "native",
+    "resources": {
+        "media": []
+    },
+    "sdkVersion": "3",
+    "shortName": "Fortuna",
+    "uuid": "12d91469-954a-4e27-b64d-d9a7e89765fd",
+    "versionLabel": "1.0",
+    "watchapp": {
+        "watchface": false
+    }
+}
