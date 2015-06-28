@@ -30,7 +30,7 @@ static void update_time() {
 	//Set date
 	static char date_buffer[] = "01. Jan 2015";
 
-	strftime(date_buffer, sizeof(date_buffer), "%d. %M %Y", tick_time);
+	strftime(date_buffer, sizeof(date_buffer), "%d. %b %Y", tick_time);
 
 	text_layer_set_text(s_date_layer, date_buffer);
 }
@@ -62,10 +62,10 @@ static void main_window_load(Window *window) {
 	layer_add_child(window_get_root_layer(window), text_layer_get_layer(s_time_layer));
 
 	//Date layer
-	s_date_layer = text_layer_create(GRect(0, 128, 144, 50));
+	s_date_layer = text_layer_create(GRect(0, 132, 144, 50));
 	text_layer_set_background_color(s_date_layer, GColorClear);
 	text_layer_set_text_color(s_date_layer, GColorBlack);
-	text_layer_set_text(s_date_layer, "28. Jun 2015");
+	text_layer_set_text(s_date_layer, "01. Jan 2015");
 
 	text_layer_set_font(s_date_layer, fonts_get_system_font(FONT_KEY_GOTHIC_28_BOLD));
 	text_layer_set_text_alignment(s_date_layer, GTextAlignmentCenter);
