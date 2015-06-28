@@ -7,10 +7,19 @@
     "longName": "Fortuna",
     "projectType": "native",
     "resources": {
-        "media": []
+        "media": [
+            {
+                "file": "images/fortuna.png",
+                "name": "FORTUNA_PNG",
+                "type": "png"
+            }
+        ]
     },
     "sdkVersion": "3",
     "shortName": "Fortuna",
+    "targetPlatforms": [
+        "basalt"
+    ],
     "uuid": "12d91469-954a-4e27-b64d-d9a7e89765fd",
     "versionLabel": "1.0",
     "watchapp": {
