@@ -1,3 +1,9 @@
+/*
+ * The MIT License (MIT)
+ * 
+ * Copyright (c) 2015 Benedict Balzer
+ *
+ */
 #include <pebble.h>
 
 static void init() {
