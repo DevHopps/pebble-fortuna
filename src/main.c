@@ -7,6 +7,8 @@
 #include <pebble.h>
 
 static Window *s_main_window;
+static GBitmap *s_bitmap;
+static BitmapLayer *s_bitmap_layer;
 static TextLayer *s_time_layer;
 
 static void update_time() {
@@ -29,6 +31,17 @@ static void tick_handler(struct tm *tick_time, TimeUnits units_changed) {
 }
 
 static void main_window_load(Window *window) {
+	//Logo layer
+	GRect bounds = layer_get_bounds(window_get_root_layer(window));
+
+	s_bitmap = gbitmap_create_with_resource(RESOURCE_ID_FORTUNA_PNG);
+
+	s_bitmap_layer = bitmap_layer_create(bounds);
+	bitmap_layer_set_bitmap(s_bitmap_layer, s_bitmap);
+	bitmap_layer_set_compositing_mode(s_bitmap_layer, GCompOpSet);
+	layer_add_child(window_get_root_layer(window), bitmap_layer_get_layer(s_bitmap_layer));
+
+	//Time layer
 	s_time_layer = text_layer_create(GRect(0, 55, 144, 50));
 	text_layer_set_background_color(s_time_layer, GColorClear);
 	text_layer_set_text_color(s_time_layer, GColorBlack);
@@ -41,7 +54,9 @@ static void main_window_load(Window *window) {
 }
 
 static void main_window_unload(Window *window) {
-
+	text_layer_destroy(s_time_layer);
+	bitmap_layer_destroy(s_bitmap_layer);
+  	gbitmap_destroy(s_bitmap);
 }
 
 static void init() {
