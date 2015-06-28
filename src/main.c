@@ -9,10 +9,6 @@
 static Window *s_main_window;
 static TextLayer *s_time_layer;
 
-static void tick_handler(struct tm *tick_time, TimeUnits units_changed) {
-	update_time();
-}
-
 static void update_time() {
 	time_t temp = time(NULL); 
 	struct tm *tick_time = localtime(&temp);
@@ -26,6 +22,10 @@ static void update_time() {
 	}
 
 	text_layer_set_text(s_time_layer, buffer);
+}
+
+static void tick_handler(struct tm *tick_time, TimeUnits units_changed) {
+	update_time();
 }
 
 static void main_window_load(Window *window) {
