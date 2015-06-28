@@ -16,15 +16,23 @@ static void update_time() {
 	time_t temp = time(NULL); 
 	struct tm *tick_time = localtime(&temp);
 
-	static char buffer[] = "00:00";
+	//Set time
+	static char time_buffer[] = "00:00";
 
 	if(clock_is_24h_style() == true) {
-		strftime(buffer, sizeof("00:00"), "%H:%M", tick_time);
+		strftime(time_buffer, sizeof(time_buffer), "%H:%M", tick_time);
 	} else {
-		strftime(buffer, sizeof("00:00"), "%I:%M", tick_time);
+		strftime(time_buffer, sizeof(time_buffer), "%I:%M", tick_time);
 	}
 
-	text_layer_set_text(s_time_layer, buffer);
+	text_layer_set_text(s_time_layer, time_buffer);
+
+	//Set date
+	static char date_buffer[] = "01. Jan 2015";
+
+	strftime(date_buffer, sizeof(date_buffer), "%d. %M %Y", tick_time);
+
+	text_layer_set_text(s_date_layer, date_buffer);
 }
 
 static void tick_handler(struct tm *tick_time, TimeUnits units_changed) {
@@ -54,7 +62,7 @@ static void main_window_load(Window *window) {
 	layer_add_child(window_get_root_layer(window), text_layer_get_layer(s_time_layer));
 
 	//Date layer
-	s_date_layer = text_layer_create(GRect(0, 120, 144, 50));
+	s_date_layer = text_layer_create(GRect(0, 128, 144, 50));
 	text_layer_set_background_color(s_date_layer, GColorClear);
 	text_layer_set_text_color(s_date_layer, GColorBlack);
 	text_layer_set_text(s_date_layer, "28. Jun 2015");
@@ -67,6 +75,7 @@ static void main_window_load(Window *window) {
 
 static void main_window_unload(Window *window) {
 	text_layer_destroy(s_time_layer);
+	text_layer_destroy(s_date_layer);
 	bitmap_layer_destroy(s_bitmap_layer);
   	gbitmap_destroy(s_bitmap);
 }
