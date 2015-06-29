@@ -51,20 +51,20 @@ static void main_window_load(Window *window) {
 	layer_add_child(window_get_root_layer(window), bitmap_layer_get_layer(s_bitmap_layer));
 
 	//Time layer
-	s_time_layer = text_layer_create(GRect(0, -5, 144, 50));
-	text_layer_set_background_color(s_time_layer, GColorClear);
-	text_layer_set_text_color(s_time_layer, GColorBlack);
+	s_time_layer = text_layer_create(GRect(0, -6, 144, 33));
+	text_layer_set_background_color(s_time_layer, GColorBlack);
+	text_layer_set_text_color(s_time_layer, GColorWhite);
 	text_layer_set_text(s_time_layer, "00:00");
 
-	text_layer_set_font(s_time_layer, fonts_get_system_font(FONT_KEY_BITHAM_42_BOLD));
+	text_layer_set_font(s_time_layer, fonts_get_system_font(FONT_KEY_GOTHIC_28_BOLD));
 	text_layer_set_text_alignment(s_time_layer, GTextAlignmentCenter);
 
 	layer_add_child(window_get_root_layer(window), text_layer_get_layer(s_time_layer));
 
 	//Date layer
-	s_date_layer = text_layer_create(GRect(0, 132, 144, 50));
-	text_layer_set_background_color(s_date_layer, GColorClear);
-	text_layer_set_text_color(s_date_layer, GColorBlack);
+	s_date_layer = text_layer_create(GRect(0, 136, 144, 33));
+	text_layer_set_background_color(s_date_layer, GColorBlack);
+	text_layer_set_text_color(s_date_layer, GColorWhite);
 	text_layer_set_text(s_date_layer, "01. Jan 2015");
 
 	text_layer_set_font(s_date_layer, fonts_get_system_font(FONT_KEY_GOTHIC_28_BOLD));
